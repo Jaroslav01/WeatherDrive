@@ -1,0 +1,71 @@
+﻿@page "/Weather"
+
+@using BlazorApp1.Data
+@inject WeatherForecastService ForecastService
+<h1>Weather Drive</h1>
+
+<form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="First city">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="Second city">
+    </div>
+    <button type="submit" class="btn btn-primary m-5 oi oi-magnifying-glass">Search</button>
+</form>
+
+
+
+
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.City</td>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private void IncrementCount()
+    {
+        {
+            BlazorApp1.Api.Weather wather = new BlazorApp1.Api.Weather();
+            var response = wather.get_weather("lviv");
+
+        }
+    }
+
+    private WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}

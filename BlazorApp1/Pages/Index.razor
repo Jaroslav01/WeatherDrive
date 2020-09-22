@@ -1,0 +1,152 @@
+﻿@page "/"
+<center>
+    <h1>Weather Now</h1>
+
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[0]</p>
+        <center> <img class="" src=@icon[0] alt="Alternate Text" /> </center>
+        <p class="city">@city[0]</p>
+        <p>@temp[0] @him[0]</p>
+        <p> @pressure[0]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[1]</p>
+        <center> <img class="" src=@icon[1] alt="Alternate Text" /> </center>
+        <p class="city">@city[1]</p>
+        <p>@temp[1] @him[1]</p>
+        <p> @pressure[1]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[2]</p>
+        <center> <img class="" src=@icon[2] alt="Alternate Text" /> </center>
+        <p class="city">@city[2]</p>
+        <p>@temp[2] @him[2]</p>
+        <p> @pressure[2]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[3]</p>
+        <center> <img class="" src=@icon[3] alt="Alternate Text" /> </center>
+        <p class="city">@city[3]</p>
+        <p>@temp[3] @him[3]</p>
+        <p> @pressure[3]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[4]</p>
+        <center> <img class="" src=@icon[4] alt="Alternate Text" /> </center>
+        <p class="city">@city[4]</p>
+        <p>@temp[4] @him[4]</p>
+        <p> @pressure[4]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[5]</p>
+        <center> <img class="" src=@icon[5] alt="Alternate Text" /> </center>
+        <p class="city">@city[5]</p>
+        <p>@temp[5] @him[5]</p>
+        <p> @pressure[5]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[6]</p>
+        <center> <img class="" src=@icon[6] alt="Alternate Text" /> </center>
+        <p class="city">@city[6]</p>
+        <p>@temp[6] @him[6]</p>
+        <p> @pressure[6]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[7]</p>
+        <center> <img class="" src=@icon[7] alt="Alternate Text" /> </center>
+        <p class="city">@city[7]</p>
+        <p>@temp[7] @him[7]</p>
+        <p> @pressure[7]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[8]</p>
+        <center> <img class="" src=@icon[8] alt="Alternate Text" /> </center>
+        <p class="city">@city[8]</p>
+        <p>@temp[8] @him[8]</p>
+        <p> @pressure[8]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[9]</p>
+        <center> <img class="" src=@icon[9] alt="Alternate Text" /> </center>
+        <p class="city">@city[9]</p>
+        <p>@temp[9] @him[9]</p>
+        <p> @pressure[9]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[10]</p>
+        <center> <img class="" src=@icon[10] alt="Alternate Text" /> </center>
+        <p class="city">@city[10]</p>
+        <p>@temp[10] @him[10]</p>
+        <p> @pressure[10]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[11]</p>
+        <center> <img class="" src=@icon[11] alt="Alternate Text" /> </center>
+        <p class="city">@city[11]</p>
+        <p>@temp[11] @him[11]</p>
+        <p> @pressure[11]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[12]</p>
+        <center> <img class="" src=@icon[12] alt="Alternate Text" /> </center>
+        <p class="city">@city[12]</p>
+        <p>@temp[12] @him[12]</p>
+        <p> @pressure[12]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[13]</p>
+        <center> <img class="" src=@icon[13] alt="Alternate Text" /> </center>
+        <p class="city">@city[13]</p>
+        <p>@temp[13] @him[13]</p>
+        <p> @pressure[13]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[14]</p>
+        <center> <img class="" src=@icon[14] alt="Alternate Text" /> </center>
+        <p class="city">@city[14]</p>
+        <p>@temp[14] @him[14]</p>
+        <p> @pressure[14]</p>
+    </div>
+    <div class="h-25 d-inline-block weather_box">
+        <p class="day">@day[15]</p>
+        <center> <img class="" src=@icon[15] alt="Alternate Text" /> </center>
+        <p class="city">@city[15]</p>
+        <p>@temp[15] @him[15]</p>
+        <p> @pressure[15]</p>
+    </div>
+</center>
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    string[] day = new string[16];
+    string[] ip = new string[16];
+    string[] city = new string[16];
+    string[] temp = new string[16];
+    string[] him = new string[16];
+    string[] pressure = new string[16];
+    string[] icon = new string[16];
+
+    private void IncrementCount()
+    {
+
+        {
+            Api.Weather wather = new Api.Weather();
+            Api.MyAPI myAPI = new Api.MyAPI();
+            var response_ip = myAPI.get_myipdata();
+            var response_weather = wather.get_weather(myAPI.city(response_ip));
+            for (int i = 0; i < 16; i++)
+            {
+                ip[i] = myAPI.ip(response_ip);
+                city[i] = myAPI.city(response_ip);
+                icon[i] = $"http://openweathermap.org/img/wn/{wather.icon(response_weather)}@2x.png";
+                temp[i] = wather.temp(response_weather);
+                him[i] = wather.humidity(response_weather);
+                pressure[i] = wather.pressure(response_weather);
+                day[i] = "Monday";
+            }
+
+
+        }
+
+    }
+}

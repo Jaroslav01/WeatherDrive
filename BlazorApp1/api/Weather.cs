@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using BlazorApp1.Pages;
+using BlazorApp1.Data;
+namespace BlazorApp1.Api
+{
+    class Weather
+    {
+        string api = "c99ae9a8c5fb62b510a1558da2444576";
+        string lang = "ru";
+        public string get_weather(string city)
+        {
+            using var httpClient = new HttpClient();
+            var response = httpClient.GetStringAsync(
+                $"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api}&lang={lang}")
+                .GetAwaiter().GetResult();
+            return response;
+        }
+        public string get_weather_coordinates(string lat, string lon)
+        {
+            using var httpClient = new HttpClient();
+            var response = httpClient.GetStringAsync(
+                $"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api}&lang={lang}")
+                .GetAwaiter().GetResult();
+            return response;
+        }
+        public string temp(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{Math.Round(tree["main"]["temp"].Value<double>() - 273, 1)}";
+        }
+        public string humidity(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{Math.Round(tree["main"]["humidity"].Value<double>(), 1)}%";
+        }
+        public string pressure(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{Math.Round(tree["main"]["pressure"].Value<double>(), 1)}mm";
+        }
+        public string icon(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{tree["weather"][0]["icon"].Value<string>()}";
+        }
+        public string name(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{tree["name"].Value<string>()}";
+        }
+    }
+}
