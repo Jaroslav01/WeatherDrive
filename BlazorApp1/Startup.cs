@@ -12,13 +12,10 @@ using Microsoft.Extensions.Hosting;
 using BlazorApp1.Data;
 using BlazorApp1.Api;
 
-
 namespace BlazorApp1
 {
     public class Startup
     {
-        Weather weather = new Weather();
-        MyAPI myAPI = new MyAPI();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,6 +29,7 @@ namespace BlazorApp1
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddSingleton<WeatherIndexService>();
             services.AddSingleton<WeatherForecastService>();
         }
 

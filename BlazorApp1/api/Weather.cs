@@ -5,12 +5,13 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using BlazorApp1.Pages;
 using BlazorApp1.Data;
+
 namespace BlazorApp1.Api
 {
     class Weather
     {
-        string api = "c99ae9a8c5fb62b510a1558da2444576";
-        string lang = "ru";
+        readonly string api = "c99ae9a8c5fb62b510a1558da2444576";
+        readonly string lang = "en";
         public string get_weather(string city)
         {
             using var httpClient = new HttpClient();
@@ -51,6 +52,16 @@ namespace BlazorApp1.Api
         {
             var tree = JObject.Parse(response);
             return $"{tree["name"].Value<string>()}";
+        }
+        public string lon(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{tree["coord"]["lon"]}";
+        }
+        public string lat(string response)
+        {
+            var tree = JObject.Parse(response);
+            return $"{tree["coord"]["lat"]}";
         }
     }
 }

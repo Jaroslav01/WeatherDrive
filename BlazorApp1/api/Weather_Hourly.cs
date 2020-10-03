@@ -3,19 +3,96 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using BlazorApp1.Pages;
 using BlazorApp1.Data;
+using System.Text.RegularExpressions;
+using System;
+
 namespace BlazorApp1.Api
 {
     class Weather_Hourly
     {
-        public string get_weather_coordinates_hourly(string lat, string lon)
+        public string GetWeatherCoordinatesHourly(string lat, string lon)
         {
             string api = "c99ae9a8c5fb62b510a1558da2444576";
-            string lang = "ru";
+            string lang = "en";
             using var httpClient = new HttpClient();
             var response = httpClient.GetStringAsync(
                 $"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={api}&lang={lang}")
                 .GetAwaiter().GetResult();
             return response;
+        }
+        public List<string> DaylyTemp(string response)
+        {
+            var tree = JObject.Parse(response);
+            JArray jArray = (JArray)tree["daily"];
+            int length = jArray.Count;
+            var array1 = new List<string>();
+            
+            for (int i = 0; i < length; i++)
+            {
+                string a = $"{Math.Round(tree["daily"][i]["temp"]["day"].Value<double>() - 273, 1)}°C";
+                array1.Add(a);
+            }
+            return array1;
+        }
+        public List<string> DaylyHim(string response)
+        {
+            var tree = JObject.Parse(response);
+            JArray jArray = (JArray)tree["daily"];
+            int length = jArray.Count;
+            var array1 = new List<string>();
+            for (int i = 0; i < length; i++)
+            {
+                array1.Add($"{tree["daily"][i]["humidity"]}%");
+            }
+            return array1;
+        }
+        public List<string> DaylyPressure(string response)
+        {
+            var tree = JObject.Parse(response);
+            JArray jArray = (JArray)tree["daily"];
+            int length = jArray.Count;
+            var array1 = new List<string>();
+            for (int i = 0; i < length; i++)
+            {
+                array1.Add($"{tree["daily"][i]["pressure"]}mh");
+            }
+            return array1;
+        }
+        public List<string> DaylyClouds(string response)
+        {
+            var tree = JObject.Parse(response);
+            JArray jArray = (JArray)tree["daily"];
+            int length = jArray.Count;
+            var array1 = new List<string>();
+            for (int i = 0; i < length; i++)
+            {
+                array1.Add($"{tree["daily"][i]["weather"][0]["main"]}");
+            }
+            return array1;
+        }
+        public List<string> DaylyCloudsDescription(string response)
+        {
+            var tree = JObject.Parse(response);
+            JArray jArray = (JArray)tree["daily"];
+            int length = jArray.Count;
+            var array1 = new List<string>();
+            for (int i = 0; i < length; i++)
+            {
+                array1.Add($"{tree["daily"][i]["weather"][0]["description"]}");
+            }
+            return array1;
+        }
+        public List<string> DaylyIcon(string response)
+        {
+            var tree = JObject.Parse(response);
+            JArray jArray = (JArray)tree["daily"];
+            int length = jArray.Count;
+            var array1 = new List<string>();
+            for (int i = 0; i < length; i++)
+            {
+                array1.Add($"{tree["daily"][i]["weather"][0]["icon"]}");
+            }
+            return array1;
         }
         public List<string> temp(string response)
         {

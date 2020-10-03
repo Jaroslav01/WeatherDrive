@@ -3,17 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>0aa07f80-d444-4329-a457-059108c2c4ad</UserSecretsId>
+    <StartupObject>BlazorApp1.Program</StartupObject>
+    <AssemblyName>BlazorApp1</AssemblyName>
+    <RootNamespace>BlazorApp1</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Index.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Data\Index.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

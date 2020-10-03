@@ -1,28 +1,44 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace BlazorApp1.Data
 {
     public class WeatherForecastService
     {
-        private static readonly string[] Summaries = new[]
+        public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate, string firstCity, string secondCity)
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+            Api.Weather weather = new Api.Weather();
+            Api.Direction direction = new Api.Direction();
+            Api.Weather_Hourly weather_Hourly = new Api.Weather_Hourly();
+            
+            var response_direction = direction.get_direction_namecity(firstCity, secondCity);
 
-        public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
-        {
-            BlazorApp1.Api.Weather wather = new BlazorApp1.Api.Weather();
-            var response = wather.get_weather("lviv");
-             wather.temp(response);
-            var rng = new Random();
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            List<string> city = new List<string>();
+            List<DateTime> date = new List<DateTime>();
+            List<string> HourlyTemp = new List<string>();
+            List<string> himidiatly = new List<string>();
+            List<string> pressure = new List<string>();
+            List<string> summary = new List<string>();
+
+            for (int i = 0; i < direction.lat(response_direction).Count; i++)
             {
-                City = wather.name(response),
-                Date = startDate.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                var response_weather_hourly = weather_Hourly.GetWeatherCoordinatesHourly(direction.lat(response_direction)[i], direction.lng(response_direction)[i]);
+                var response_weather_coords = weather.get_weather_coordinates(direction.lat(response_direction)[i], direction.lng(response_direction)[i]);
+
+                city.Add(weather.name(response_weather_coords));
+                date.Add(startDate.AddDays(i).AddHours(i));
+            }
+
+            return Task.FromResult(Enumerable.Range(0, direction.lat(response_direction).Count).Select(i => new WeatherForecast
+            {
+                City = city[i],
+                Date = date[i],
+                // HourlyTemperatureC = HourlyTemp[i],
+                // Himidiatly = himidiatly[i],
+                // Pressure = pressure[i],
+                // Summary = "hu"
             }).ToArray());
         }
     }

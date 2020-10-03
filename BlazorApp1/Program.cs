@@ -13,8 +13,6 @@ namespace BlazorApp1
 {
     public class Program
     {
-        Weather weather = new Weather();
-        MyAPI myAPI = new MyAPI();
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

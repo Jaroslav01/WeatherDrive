@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
-using BlazorApp1.Pages;
-using BlazorApp1.Data;
 
 namespace BlazorApp1.Api
 {
     class Place
     {
-        string api = "AIzaSyB41WUy4DzQbM6LXIYawZwzApM8QoXd5g8";
+        readonly string api = "AIzaSyB41WUy4DzQbM6LXIYawZwzApM8QoXd5g8";
         public string get_place(string search, string locatin)
         {
             using var httpClient = new HttpClient();

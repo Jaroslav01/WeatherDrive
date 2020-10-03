@@ -1,6 +1,8 @@
-﻿<div class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 255, 255)">
-    <a class="navbar-brand" href="">WeatherRoad</a>
-    <img src="http://openweathermap.org/img/wn/02d@2x.png" alt="Alternate Text" />
+﻿<div class="navbar navbar-expand-lg navbar-light sidebarq" style="background-color: rgb(255, 255, 255)">
+    <a class="navbar-brand" href="">
+        WeatherRoad
+        <img src="http://openweathermap.org/img/wn/02d@2x.png" />
+    </a>
 
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -14,14 +16,16 @@
                 <span class="oi oi-cloudy" aria-hidden="true"></span> Weather Now
             </NavLink>
         </li>
+        <!--
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="counter">
                 <span class="oi oi-plus" aria-hidden="true"></span> Counter
             </NavLink>
         </li>
+            -->
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="Weather">
-                <span class="oi oi-location" aria-hidden="true"></span> Weather on the road
+            <NavLink class="nav-link" href="WeatherDrive">
+                <span class="oi oi-location" aria-hidden="true"></span>Weather Drive
             </NavLink>
         </li>
         <li class="nav-item px-3">
@@ -33,6 +37,7 @@
 </div>
 
 @code {
+
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;

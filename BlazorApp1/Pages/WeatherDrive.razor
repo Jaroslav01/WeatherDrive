@@ -1,0 +1,61 @@
+﻿@page "/WeatherDrive"
+
+@using BlazorApp1.Data
+@inject WeatherForecastService ForecastService
+
+<center>
+    <h1>Weather Drive</h1>
+
+    <div class="inputRoad">
+        <input type="text" class="form-control inputcity" id="firstCity" @bind="firstCity" placeholder="First city">
+        <input type="text" class="form-control inputcity" id="secondCity" style="margin-top: 8px;" @bind="secondCity" placeholder="Second city">
+        <button type="submit" class="btn btn-primary m-5 oi oi-magnifying-glass btninputroad" @onclick="IncrementCount">Search</button>
+    </div>
+
+    @if (forecasts == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" table_current_weather">
+                    <tr class=" table_current_weather">
+                        <th table_current_weather>City</th>
+                        <th table_current_weather>Date</th>
+                        <th table_current_weather>Temp. (C)</th>
+                        <th table_current_weather>Himyditly</th>
+                        <th table_current_weather>Summary</th>
+                        <th table_current_weather>Pressure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var forecast in forecasts)
+                    {
+                        <tr>
+                            <td>@forecast.City</td>
+                            <td>@forecast.Date.ToShortDateString()</td>
+                            <td>@forecast.TemperatureC</td>
+                            <td>@forecast.Himidiatly</td>
+                            <td>@forecast.Summary</td>
+                            <td>@forecast.Pressure</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</center>
+
+
+@code {
+    string firstCity;
+    string secondCity;
+
+    private WeatherForecast[] forecasts;
+    private async Task IncrementCount()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now, firstCity, secondCity);
+    }
+}
