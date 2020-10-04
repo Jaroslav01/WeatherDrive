@@ -15,7 +15,7 @@
         {            
             BlazorApp1.Api.Weather wather = new BlazorApp1.Api.Weather();
             var response = wather.get_weather("lviv");
-            currentCount = wather.temp(response);
+            currentCount = wather.Temp(response);
         }
     }
 }

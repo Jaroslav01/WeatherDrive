@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
-using BlazorApp1.Pages;
-using BlazorApp1.Data;
 
 namespace BlazorApp1.Api
 {
@@ -28,7 +24,7 @@ namespace BlazorApp1.Api
                 .GetAwaiter().GetResult();
             return response;
         }
-        public string temp(string response)
+        public string Temp(string response)
         {
             var tree = JObject.Parse(response);
             return $"{Math.Round(tree["main"]["temp"].Value<double>() - 273, 1)}";

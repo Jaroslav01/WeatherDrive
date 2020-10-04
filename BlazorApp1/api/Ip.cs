@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Web;
-using BlazorApp1.Pages;
-using BlazorApp1.Data;
-using Microsoft.AspNetCore.Http;
 
 namespace BlazorApp1.Api
 {

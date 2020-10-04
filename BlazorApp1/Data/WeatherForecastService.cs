@@ -35,10 +35,7 @@ namespace BlazorApp1.Data
             {
                 City = city[i],
                 Date = date[i],
-                // HourlyTemperatureC = HourlyTemp[i],
-                // Himidiatly = himidiatly[i],
-                // Pressure = pressure[i],
-                // Summary = "hu"
+
             }).ToArray());
         }
     }

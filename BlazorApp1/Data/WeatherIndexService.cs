@@ -43,7 +43,7 @@ namespace BlazorApp1.Data
             city[0] = wather.name(response_weather);
             icon[0] = $"http://openweathermap.org/img/wn/{wather.icon(response_weather)}@2x.png";
             description[0] = wather.icon(response_weather);
-            temp[0] = wather.temp(response_weather);
+            temp[0] = wather.Temp(response_weather);
             him[0] = wather.humidity(response_weather);
             pressure[0] = wather.pressure(response_weather);
             day[0] = "Now";

@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
-using BlazorApp1.Pages;
-using BlazorApp1.Data;
-using System.Text.RegularExpressions;
 using System;
 
 namespace BlazorApp1.Api
@@ -94,7 +91,7 @@ namespace BlazorApp1.Api
             }
             return array1;
         }
-        public List<string> temp(string response)
+        public List<string> Temp(string response)
         {
             var tree = JObject.Parse(response);
             JArray jArray = (JArray)tree["hourly"];
