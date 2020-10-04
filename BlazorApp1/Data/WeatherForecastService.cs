@@ -27,6 +27,12 @@ namespace BlazorApp1.Data
                 var response_weather_hourly = weather_Hourly.GetWeatherCoordinatesHourly(direction.lat(response_direction)[i], direction.lng(response_direction)[i]);
                 var response_weather_coords = weather.get_weather_coordinates(direction.lat(response_direction)[i], direction.lng(response_direction)[i]);
 
+                int time =  Convert.ToInt32(Math.Round(direction.time_value(response_direction)[i] / 60 / 60, 0));
+
+
+                himidiatly.Add(weather_Hourly.humidity(response_weather_hourly)[time]);
+                HourlyTemp.Add(weather_Hourly.Temp(response_weather_hourly)[time]);
+                pressure.Add(weather_Hourly.pressure(response_weather_hourly)[time]);
                 city.Add(weather.name(response_weather_coords));
                 date.Add(startDate.AddDays(i).AddHours(i));
             }
@@ -35,7 +41,7 @@ namespace BlazorApp1.Data
             {
                 City = city[i],
                 Date = date[i],
-
+                Pressure = pressure[i],
             }).ToArray());
         }
     }
