@@ -29,7 +29,6 @@ namespace BlazorApp1.Data
 
                 int time =  Convert.ToInt32(Math.Round(direction.time_value(response_direction)[i] / 60 / 60, 0));
 
-
                 himidiatly.Add(weather_Hourly.humidity(response_weather_hourly)[time]);
                 HourlyTemp.Add(weather_Hourly.Temp(response_weather_hourly)[time]);
                 pressure.Add(weather_Hourly.pressure(response_weather_hourly)[time]);
@@ -42,6 +41,8 @@ namespace BlazorApp1.Data
                 City = city[i],
                 Date = date[i],
                 Pressure = pressure[i],
+                TemperatureC = HourlyTemp[i],
+                Himidiatly = himidiatly[i],
             }).ToArray());
         }
     }
