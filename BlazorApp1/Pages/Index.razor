@@ -38,7 +38,7 @@
     private WeatherIndex[] index;
     private async Task GetWeatherData()
     {
-        index = await IndexServise.GetIndexAsync(input);
+        index = await IndexServise.GetIndexAsync(DateTime.UtcNow, input);
     }
 
     protected override async Task OnInitializedAsync()

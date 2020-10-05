@@ -35,7 +35,7 @@
                     {
                         <tr>
                             <td>@forecast.City</td>
-                            <td>@forecast.Date.ToShortDateString()</td>
+                            <td>@forecast.Date</td>
                             <td>@forecast.TemperatureC</td>
                             <td>@forecast.Himidiatly</td>
                             <td>@forecast.Summary</td>
@@ -56,6 +56,6 @@
     private WeatherForecast[] forecasts;
     private async Task IncrementCount()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now, firstCity, secondCity);
+        forecasts = await ForecastService.GetForecastAsync(DateTime.UtcNow, firstCity, secondCity);
     }
 }

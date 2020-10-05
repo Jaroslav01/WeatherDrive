@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using BlazorApp1.Api;
 
@@ -11,7 +13,7 @@ namespace BlazorApp1.Data
             "Now", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" , "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" , "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
         };
 
-        public Task<WeatherIndex[]> GetIndexAsync(string City)
+        public Task<WeatherIndex[]> GetIndexAsync(DateTime startDate, string City)
         {
             Weather wather = new Weather();
             MyAPI myAPI = new MyAPI();
@@ -30,6 +32,7 @@ namespace BlazorApp1.Data
 
             int length = weather_Hourly.DaylyHim(response_weather_hourly).Count;
 
+            
             string[] day = new string[length + 1];
             string[] icon = new string[length + 1];
             string[] city = new string[length + 1];
@@ -46,7 +49,7 @@ namespace BlazorApp1.Data
             temp[0] = wather.Temp(response_weather);
             him[0] = wather.humidity(response_weather);
             pressure[0] = wather.pressure(response_weather);
-            day[0] = "Now";
+            day[0] = "sdf";
 
             for (int i = 0; i < length; i++)
             {
@@ -57,7 +60,7 @@ namespace BlazorApp1.Data
                 temp[i + 1] = weather_Hourly.DaylyTemp(response_weather_hourly)[i];
                 him[i + 1] = weather_Hourly.DaylyHim(response_weather_hourly)[i];
                 pressure[i + 1] = weather_Hourly.DaylyPressure(response_weather_hourly)[i];
-                day[i + 1] = "Monday";
+                day[i + 1] = startDate.AddDays(i).ToString("");
             }
 
             return Task.FromResult(Enumerable.Range(0, length).Select(i => new WeatherIndex
