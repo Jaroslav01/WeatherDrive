@@ -33,14 +33,14 @@
                 <tbody>
                     @foreach (var forecast in forecasts)
                     {
-                        <tr>
-                            <td>@forecast.City</td>
-                            <td>@forecast.Date</td>
-                            <td>@forecast.TemperatureC</td>
-                            <td>@forecast.Himidiatly</td>
-                            <td>@forecast.Summary</td>
-                            <td>@forecast.Pressure</td>
-                        </tr>
+                    <tr>
+                        <td>@forecast.City</td>
+                        <td><img src="@forecast.Icon" alt="Alternate Text" /></td>
+                        <td>@forecast.Date</td>
+                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.Himidiatly</td>
+                        <td>@forecast.Pressure</td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -48,7 +48,7 @@
     }
 </center>
 
-
+SS
 @code {
     string firstCity;
     string secondCity;

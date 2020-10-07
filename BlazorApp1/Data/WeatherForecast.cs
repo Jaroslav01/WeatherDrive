@@ -10,10 +10,10 @@ namespace BlazorApp1.Data
 
         public string TemperatureC { get; set; }
 
-        public string Summary { get; set; }
-
         public string Himidiatly { get; set; }
 
         public string Pressure { get; set; }
+
+        public string Icon { get; set; }
     }
 }
