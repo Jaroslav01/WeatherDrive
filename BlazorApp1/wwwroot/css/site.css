@@ -143,25 +143,6 @@ app {
 
 
 
-@media (max-width: 767.98px) {
-    .weathernowdiv {
-        background-color: white;
-        border-radius: 10px;
-        padding: 25px;
-        max-width: 300px;
-    }
-    .main .top-row:not(.auth) {
-        display: none;
-    }
-
-    .main .top-row.auth {
-        justify-content: space-between;
-    }
-
-    .main .top-row a, .main .top-row .btn-link {
-        margin-left: 0;
-    }
-}
 
 @media (min-width: 768px) {
     app {
@@ -314,6 +295,12 @@ app {
 }
 
 @media (max-width: 950px) and (min-width: 384px) {
+    .table td, .table th {
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        max-width: 10px;
+    }
     .error404 {
         max-width: 300px;
     }
@@ -430,6 +417,12 @@ app {
 }
 
 @media (max-width: 384px) {
+    .table td, .table th {
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        max-width: 10px;
+    }
     .error404 {
         max-width: 200px;
     }
